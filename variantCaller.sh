@@ -3,17 +3,17 @@
 #SBATCH -p batch
 #SBATCH -w compute04
 #SBATCH -J bcf
-#SBATCH -n 4
+#SBATCH -n 8
 #SBATCH -o variant_out.log
 #SBATCH -e variant_errors.log
-THREADS=4
+THREADS=8
 
 
 (( BCF_THREADS = THREADS-1 ))
 
-BASEDIR=/var/scratch/mwanjiku/aligning_out
+BASEDIR=/home/mwanjiku/aligning_out
 MG8REFDIR=/home/mwanjiku/refGenome/Magnaporthe_oryzae.MG8.dna.toplevel.fa
-OUTDIR=/var/scratch/mwanjiku/variantCalling_out
+OUTDIR=/home/mwanjiku/variantCalling_out
 
 #loading bcftools and igvtools
 
@@ -23,8 +23,9 @@ module load igvtools/2.3.98
 #running the following commands on all the data
 
 # running the commands on only the 42 available isolates
-for i in 12 12- 13 14 15 15- 16- 17 18 21- 22 22- 23- 24 25 27 29 32 34 36 38 39- 4- 41 43 47 49 5 5- 52 54 55 56 59 6 60 69 70 71 9
-
+# for i in 12 12- 13 14 15 15- 16- 17 18 21- 22 22- 23- 24 25 27 29 32 34 36 38 39- 4- 41 43 47 49 5 5- 52 54 55 56 59 6 60 69 70 71 9
+# running the commands on the remaining 7 isolates
+for i in 16 58 61 64 65 7 7-
 
 do
   echo -e "\n\nIsolate ${i}\n"

@@ -21,9 +21,9 @@ with open(filename, 'r') as csvfile:
             
         for list in fasta:            #opens the list containing the rows representing the isolates   
             for word in list:       #accesses each of the nested list(each isolate)
-                if len(word) > 1 and word.startswith('iso'):
+                if len(word) > 1:
                     header = '\n' + ">" + word + '\n'
-                    out.write(header)              #prints the headers into the output file
+                    out.write(word)              #prints the headers into the output file
 
                 else:
                     if len(word) == 1:        #prints the sequences to the output file
